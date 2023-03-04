@@ -22,6 +22,8 @@ class PokerEngine {
     short search(int rank_prime);
     short simulate(int n_player);
     void simulate_games(int num_games, int n_player);
+    int* random_five();
+    void benchmark_eval();
 };
 
 #endif

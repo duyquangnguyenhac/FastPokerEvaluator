@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 #include <chrono>
+#include <cstdint>
 #include <cstdlib>
 #include <iostream>
 
@@ -116,6 +117,28 @@ short PokerEngine::evaluate(int* hand) {
     return values[search(rank_prime)];
 }
 
+int* PokerEngine::random_five() {
+    shuffle();
+    int* hand = (int*)malloc(sizeof(int) * 5);
+    int cards_cnt = 0;
+    for (cards_cnt; cards_cnt < 5; cards_cnt++) {
+        hand[cards_cnt] = deck[cards_cnt];
+    }
+    return hand;
+}
+
+void PokerEngine::benchmark_eval() {
+    int* hand = random_five();
+    auto t1 = high_resolution_clock::now();
+    evaluate(hand);
+    auto t2 = high_resolution_clock::now();
+    /* Getting number of milliseconds as a double. */
+    duration<double, std::milli> ms_double = t2 - t1;
+    duration<double, std::nano> ns_double = t2 - t1;
+    std::cout << "Time taken to evaluate one 5 cards hand: " << ms_double.count() << "ms"
+              << " " << ns_double.count() << "ns\n";
+}
+
 short PokerEngine::simulate(int n_player) {
     shuffle();
     int* all_hands[n_player];
@@ -129,14 +152,7 @@ short PokerEngine::simulate(int n_player) {
         }
         all_hands[i] = hand;
 
-        // auto t1 = high_resolution_clock::now();
         all_values[i] = evaluate(hand);
-        // auto t2 = high_resolution_clock::now();
-        /* Getting number of milliseconds as a double. */
-        // duration<double, std::milli> ms_double = t2 - t1;
-        // std::cout << ms_double.count() << "ms\n";
-        // duration<double, std::nano> ns_double = t2 - t1;
-        // std::cout << ns_double.count() << "ns\n";
     }
     short max_hand_val = *std::max_element(all_values, all_values + n_player);
     // std::cout << "Best Hand Value: " << max_hand_val << "\n";
