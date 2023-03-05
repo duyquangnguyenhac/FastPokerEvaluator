@@ -18,7 +18,7 @@ class PokerEngine {
     void print_deck();
     void print_hand(int* hand, int num_cards);
     void shuffle();
-    short evaluate(int* hand);
+    virtual short evaluate(int* hand);
     short search(int rank_prime);
     short simulate(int n_player);
     void simulate_games(int num_games, int n_player);

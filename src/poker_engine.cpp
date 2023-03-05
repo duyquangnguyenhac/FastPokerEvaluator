@@ -7,6 +7,7 @@
 #include <cstdint>
 #include <cstdlib>
 #include <iostream>
+#include <vector>
 
 #include "arrays.h"
 
@@ -16,8 +17,6 @@ using std::chrono::high_resolution_clock;
 using std::chrono::milliseconds;
 
 PokerEngine::PokerEngine() {
-    std::cout << "Poker Engine started"
-              << "\n";
     srand(time(NULL));
     deck = generate_deck();
 }
@@ -132,6 +131,7 @@ void PokerEngine::benchmark_eval() {
     auto t1 = high_resolution_clock::now();
     evaluate(hand);
     auto t2 = high_resolution_clock::now();
+    free(hand);
     /* Getting number of milliseconds as a double. */
     duration<double, std::milli> ms_double = t2 - t1;
     duration<double, std::nano> ns_double = t2 - t1;
@@ -151,19 +151,18 @@ short PokerEngine::simulate(int n_player) {
             hand[cards_cnt++] = deck[deck_idx];
         }
         all_hands[i] = hand;
-
         all_values[i] = evaluate(hand);
     }
     short max_hand_val = *std::max_element(all_values, all_values + n_player);
     // std::cout << "Best Hand Value: " << max_hand_val << "\n";
+    // std::vector<int*> winning_hands{};
     // for (int i = 0; i < n_player; i++) {
     //     if (all_values[i] == max_hand_val) {
-    //         std::cout << "Winning hand: ";
-    //         print_hand(all_hands[i], 5);
-    //         std::cout << "\n";
+    //         winning_hands.push_back(all_hands[i]);
     //     }
     // }
-    return 1;
+    // return winning_hands;
+    return 0;
 }
 
 void PokerEngine::simulate_games(int num_games, int n_player) {
@@ -173,7 +172,7 @@ void PokerEngine::simulate_games(int num_games, int n_player) {
     while (num_games != 0) {
         // printf("Game %c", cnt++);
         simulate(n_player);
-        num_games--;
+        --num_games;
     }
     auto t2 = high_resolution_clock::now();
     duration<double, std::milli> ms_double = t2 - t1;
