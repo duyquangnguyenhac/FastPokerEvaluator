@@ -50,9 +50,12 @@ int main(int argc, char** argv) {
     // Run the benchmark
     RunSpecifiedBenchmarks();
 
+    std::cout << "\n";
+    std::cout << "Run simulation games..."
+              << "\n";
+
     PokerEngine* cactus = new CactusKev();
     PokerEngine* senzee = new Senzee();
-
     cactus->simulate_games(1000000, 5);
     senzee->simulate_games(1000000, 5);
     return 0;
