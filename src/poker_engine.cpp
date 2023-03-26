@@ -154,27 +154,18 @@ short PokerEngine::simulate(int n_player) {
         all_values[i] = evaluate(hand);
     }
     short max_hand_val = *std::max_element(all_values, all_values + n_player);
-    // std::cout << "Best Hand Value: " << max_hand_val << "\n";
-    // std::vector<int*> winning_hands{};
-    // for (int i = 0; i < n_player; i++) {
-    //     if (all_values[i] == max_hand_val) {
-    //         winning_hands.push_back(all_hands[i]);
-    //     }
-    // }
-    // return winning_hands;
-    return 0;
+    return max_hand_val;
 }
 
 void PokerEngine::simulate_games(int num_games, int n_player) {
     int cnt = 0;
-
+    int total_games = num_games;
     auto t1 = high_resolution_clock::now();
     while (num_games != 0) {
-        // printf("Game %c", cnt++);
         simulate(n_player);
         --num_games;
     }
     auto t2 = high_resolution_clock::now();
     duration<double, std::milli> ms_double = t2 - t1;
-    std::cout << ms_double.count() << "ms\n";
+    std::cout << "Ran " << total_games << " games for " << n_player << " players in " << ms_double.count() << "ms\n";
 }

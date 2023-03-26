@@ -92,6 +92,7 @@ PokerEvaluator_EXTERNAL_OBJECTS =
 
 PokerEvaluator: CMakeFiles/PokerEvaluator.dir/src/main.cpp.o
 PokerEvaluator: CMakeFiles/PokerEvaluator.dir/build.make
+PokerEvaluator: /usr/local/lib/libbenchmark.a
 PokerEvaluator: CMakeFiles/PokerEvaluator.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/quangnguyen/Developer/Cpp/PokerEvaluator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable PokerEvaluator"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PokerEvaluator.dir/link.txt --verbose=$(VERBOSE)
