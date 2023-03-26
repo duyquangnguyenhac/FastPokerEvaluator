@@ -56,7 +56,10 @@ int main(int argc, char** argv) {
 
     PokerEngine* cactus = new CactusKev();
     PokerEngine* senzee = new Senzee();
-    cactus->simulate_games(1000000, 5);
+    std::cout << "Senzee: ";
     senzee->simulate_games(1000000, 5);
+
+    std::cout << "Cactus: ";
+    cactus->simulate_games(1000000, 5);
     return 0;
 }
