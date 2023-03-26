@@ -26,4 +26,19 @@ Ran 1000000 games for 5 players in 755.22ms
 Ran 1000000 games for 5 players in 532.532ms
 ```
 
-## How to build a run this project
+## How to build and run this project
+Clone this project to your local machine
+
+If you don't already have google benchmark, find some instructions here ...
+
+cd in to /build
+
+Run 
+```console 
+    foo@bar:~$ cmake ..
+```
+to build the project. 
+
+Then, in the same folder, run the PokerEvaluator executable.
+
+
