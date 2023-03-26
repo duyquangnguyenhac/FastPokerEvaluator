@@ -31,11 +31,11 @@ Clone this project to your local machine
 
 If you don't already have google benchmark, find some instructions here ...
 
-cd in to /build
+Navigate to the /build 
 
 Run 
 ```console 
-    foo@bar:~$ cmake ..
+    quangnguyen@JJames build % cmake ..
 ```
 to build the project. 
 
