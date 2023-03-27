@@ -4,8 +4,6 @@
 #include "poker_engine.cpp"
 #include "senzee.cpp"
 
-using namespace benchmark;
-
 static void BM_Senzee(benchmark::State& state) {
     PokerEngine* senzee = new Senzee();
     int* hand = senzee->random_five();
@@ -45,10 +43,10 @@ BENCHMARK(BM_Senzee);
 int main(int argc, char** argv) {
     std::cout << "Poker Engines started"
               << "\n";
-    Initialize(&argc, argv);
+    benchmark::Initialize(&argc, argv);
 
     // Run the benchmark
-    RunSpecifiedBenchmarks();
+    benchmark::RunSpecifiedBenchmarks();
 
     std::cout << "\n";
     std::cout << "Run simulation games..."
