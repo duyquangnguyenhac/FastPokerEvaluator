@@ -7,23 +7,25 @@ A recent output of the benchmark obtained by running the PokerEvaluator executab
 
 ```bash
 Poker Engines started
-2023-03-26T15:32:58-04:00
+2023-03-31T14:17:01-04:00
 Running ./PokerEvaluator
 Run on (8 X 2400 MHz CPU s)
 CPU Caches:
   L1 Data 64 KiB
   L1 Instruction 128 KiB
   L2 Unified 4096 KiB (x8)
-Load Average: 2.01, 2.38, 2.60
+Load Average: 2.52, 4.38, 4.55
 -----------------------------------------------------
 Benchmark           Time             CPU   Iterations
 -----------------------------------------------------
-BM_Cactus         164 ns          164 ns      4148320
-BM_Senzee        42.2 ns         42.1 ns     16561854
+BM_Cactus         152 ns          152 ns      4249945
+BM_Senzee        42.2 ns         42.2 ns     16719173
+BM_Quang          330 ns          330 ns      2121952
 
 Run simulation games...
-Ran 1000000 games for 5 players in 755.22ms
-Ran 1000000 games for 5 players in 532.532ms
+Senzee: Ran 1000000 games for 5 players in 531.664ms
+Cactus: Ran 1000000 games for 5 players in 752.377ms
+Quang: Ran 1000000 games for 5 players in 870.794ms
 ```
 
 ## How to build and run this project
